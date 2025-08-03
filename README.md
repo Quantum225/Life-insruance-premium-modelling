@@ -1,4 +1,5 @@
 #Life Insurance Premium Modelling
+
 This project uses real mortality data from the UK Office for National Statistics to estimate the fair annual life insurance premium for individuals at each age. The model calculates the expected years remaining for a person of a given age and then uses net present value (NPV) methods to determine the level premium required for an insurance company to break even.
 
 Key features of the project include:
