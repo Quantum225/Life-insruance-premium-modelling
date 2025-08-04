@@ -11,3 +11,6 @@ A custom-built variable-probability geometric-like distribution, designed to rea
 Data visualization using base R plotting tools to show trends in life expectancy and premium cost by age.
 
 A more conservative nested simulation model that accounts for adverse longevity risk by considering the worst-case (shortest-lived) scenario from multiple life paths, which may be useful in capital modelling and stress testing contexts.
+
+
+Note:Model assumes constant mortality rates, but life expectancy is expected to rise as medicine advances 
