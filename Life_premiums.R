@@ -81,3 +81,7 @@ axis(2,at=seq(0,1,0.05),cex.axis=0.9)
 #shifting portions of later year premiums to the early years, investing the excess to subsidize later
 #years.
 
+#Assumes constant mortality rates, but in reality life expectancy is increasing, so this model
+#underestmates life expectancy. Could use past data to project mortality rates in the future.
+
+
