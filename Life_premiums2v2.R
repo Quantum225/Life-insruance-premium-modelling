@@ -31,13 +31,15 @@ AdMortR=c(RI2*MortR[(age+1):101],1)
 AdMortR
 #This represents the adjusted mortality rate for a person of stated age
 #A one is added in the end to make sure that a person doesn't just live forever
-#Not enough data, so assume person dies after year 101
+#Not enough data, so assume person dies guaranteed after year 101
 
 
 #PMF & CDF~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #Now we construct our PMF, which should be the vector:
 #c(q71*r71,(1-q71)q72*r72^2,...,(1-q71r71)(1-q72r72^2)...(1-q100r100^30)q101r101^31,(1-q71r71)(1-q72r72^2)...(1-q100r100^30)(1-q101r101^31))
+#By converting mortality rates to a PMF of life expectancies we make it easier to 
+#use in calculations of annuities and extract other data such as mean and quantiles
 
 neg=1-AdMortR
 #This is the vector c(1-q71r71,1-q72r72^2,....,1-q101r101^31)
@@ -73,9 +75,13 @@ axis(1,at=0:length(PMF),cex.axis=0.5)
 
 #Percentiles & Mean~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+#These data points summarise the distributions of life expectancy for comparison
+#and reports
+
 ExEx=sum(seq(age+1,length(MortR)+1)*PMF)-age
 ExEx
 #This calculates expected life expectancy, i.e. the mean years left to live
+
 
 q=0.95
 which(CDF>=q)[1]
@@ -120,8 +126,13 @@ EPVp=sum(DR/v*(neg2))
 Pm=EPVb/EPVp
 Pm
 #Annuity premium for interest rate [i], calculated using EPV method
+
 Pn=if (v==1) v^ExEx/(floor(ExEx)+1) else (1-v)/(1-v^(floor(ExEx)+1))*v^(ExEx)
 Pn
 #Calculated using NPV=0 method, using expected life expectancy at age, [age]
 
 #Pm and Pn represents the annuity paid for each $1 of benefit
+
+#Use two methods, for cross-checking, whether these two agree within rounding errors.
+
+
