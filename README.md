@@ -5,5 +5,7 @@ Then, using this data, visualise the distribution, obtain other data such as mea
 
 Note: This model assumes constant interest rates, constant rate of improvements, only considers discrete ages in years, no months or days, and doesn't take into account selective mortality and ultimate mortality, you would be able to input them in the model, but you would have to do so for each age.
 
-This model IS able to consider cause-specific mortality, such as gender, smoking, and health status, by inputting mortality data into the model.
+This model also assumes constant annuities; it could consider flexible annuities, but would require changing NPV/EPV calculation formula.
+
+This model is able to consider cause-specific mortality, such as gender, smoking, and health status, by inputting mortality data into the model.
 This does require you to have the data, though.
